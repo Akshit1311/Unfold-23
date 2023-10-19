@@ -5,6 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
 /* @font-face {
   font-family: "Proto";
   src: url("/font/Roobert-Regular.ttf");

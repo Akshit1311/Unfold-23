@@ -16,15 +16,15 @@ import Image from "next/image";
 type pageProps = {};
 
 const Marketplace: React.FC<pageProps> = () => {
-  const [hash, setHash] = useHashAtom();
-  const { address } = useAccount();
-  // Handlers
-  const handleMint = async () => {
-    const receipt = await mintNft(address as `0x${string}`);
+  // const [hash, setHash] = useHashAtom();
+  // const { address } = useAccount();
+  // // Handlers
+  // const handleMint = async () => {
+  //   const receipt = await mintNft(address as `0x${string}`);
 
-    setHash(receipt?.transactionHash || "");
-    console.log("transition hash", receipt?.transactionHash || "");
-  };
+  //   setHash(receipt?.transactionHash || "");
+  //   console.log("transition hash", receipt?.transactionHash || "");
+  // };
 
   return (
     <section className="p-10">
@@ -33,12 +33,12 @@ const Marketplace: React.FC<pageProps> = () => {
 
         <div className="border border-white aspect-square flex flex-col justify-between">
           <div>
-            <Image
+            {/* <Image
               src="https://ipfs.io/ipfs/QmPeToagrXLYBZ8sBXehneFr4BAmyatJMFaSPXV6X3UP7v/1.gif"
               width={889}
               height={500}
               alt="cars"
-            />
+            /> */}
             <div>Price: 0.02 ETH</div>
           </div>
 
@@ -48,12 +48,12 @@ const Marketplace: React.FC<pageProps> = () => {
         </div>
         <div className="border border-white aspect-square flex flex-col justify-between">
           <div>
-            <Image
+            {/* <Image
               src="https://ipfs.io/ipfs/QmPeToagrXLYBZ8sBXehneFr4BAmyatJMFaSPXV6X3UP7v/2.gif"
               width={800}
               height={600}
               alt="cars"
-            />
+            /> */}
             <div>Price: 0.03 ETH</div>
           </div>
           <div className="bg-blue-500 rounded-lg px-4 py-2 text-center">

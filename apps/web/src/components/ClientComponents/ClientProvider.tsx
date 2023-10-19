@@ -5,7 +5,6 @@ import "@rainbow-me/rainbowkit/styles.css";
 
 // Libraries
 import { Toaster } from "react-hot-toast";
-import { ThemeProvider } from "next-themes";
 
 import {
   RainbowKitProvider,
@@ -85,46 +84,44 @@ const ClientProvider: React.FC<ClientProviderProps> = ({ children }) => {
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
-        <ThemeProvider attribute="class">
-          <main
-            className={cn(
-              " bg-main-light   min-h-screen w-full font-proto transition-all duration-700 ease-in-out"
-            )}
-          >
-            <Navbar />
-            {children}
-          </main>
-          {/* {!process.env.NEXT_PUBLIC_IS_LOCAL && <GlassGate />} */}
-          <Toaster
-            containerStyle={{
-              bottom: "70px",
-              animation: "ease-in-out",
-              animationFillMode: "forwards",
-            }}
-            position="bottom-right"
-            reverseOrder={false}
-            toastOptions={{
+        <main
+          className={cn(
+            "w-full font-raleway transition-all duration-700 ease-in-out"
+          )}
+        >
+          <Navbar />
+          <main className="h-full">{children}</main>
+        </main>
+        {/* {!process.env.NEXT_PUBLIC_IS_LOCAL && <GlassGate />} */}
+        <Toaster
+          containerStyle={{
+            bottom: "70px",
+            animation: "ease-in-out",
+            animationFillMode: "forwards",
+          }}
+          position="bottom-right"
+          reverseOrder={false}
+          toastOptions={{
+            style: {
+              padding: "1.2rem 1rem",
+            },
+            duration: 5000,
+            success: {
               style: {
-                padding: "1.2rem 1rem",
+                border: "1px solid #3CCB7F",
+                backgroundColor: "#121214",
+                color: "#3CCB7F",
               },
-              duration: 5000,
-              success: {
-                style: {
-                  border: "1px solid #3CCB7F",
-                  backgroundColor: "#121214",
-                  color: "#3CCB7F",
-                },
+            },
+            error: {
+              style: {
+                border: "1px solid #F87171",
+                background: "black",
+                color: "#F87171",
               },
-              error: {
-                style: {
-                  border: "1px solid #F87171",
-                  background: "black",
-                  color: "#F87171",
-                },
-              },
-            }}
-          />
-        </ThemeProvider>
+            },
+          }}
+        />
       </RainbowKitProvider>
     </WagmiConfig>
   );

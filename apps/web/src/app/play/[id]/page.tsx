@@ -1,13 +1,13 @@
 "use client";
 import CardMemory from "@/components/Card-Memory/card-memory";
 import Cars from "@/components/Cars/Cars";
-import MazeGrid from "@/components/Pacman/MazeGrid";
+import Snake from "@/components/Snake/Snake";
 import { cn } from "@/utils/helpers";
 // import { TChainClient, endGame, getUsers, startGame } from "op";
 import React, { useEffect, useState } from "react";
 import { useNetwork } from "wagmi";
 const games = {
-  pacman: <MazeGrid />,
+  snake: <Snake />,
   cars: <Cars />,
   "card-memory": <CardMemory />,
 } as const;
@@ -28,16 +28,28 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
   //   })();
   // }, [gameState]);
 
+  const gameBgMap = {
+    snake: "#bdc3c7",
+    cars: "bg-transparent",
+    "card-memory": "bg-[#01B2AD]",
+  } as const;
+
   useEffect(() => {
     console.log({ chain });
   }, [chain]);
 
   return (
     <section className=" text-black px-10 py-6 flex items-center w-full flex-col">
-      <h1 className="text-heading text-5xl font-bold mb-10">{params.id}</h1>
+      <h1 className="text-[#453A21] text-5xl font-bold mb-10 uppercase">
+        {params.id}
+      </h1>
       <div className="flex items-center w-full gap-4 h-[41rem]">
-        {/* Todo: Add the Games PLayGround */}
-        <div className="w-[80%] h-full flex justify-center border border-custom-2 rounded-lg">
+        <div
+          className={cn(
+            "w-[80%] h-full flex justify-center items-center border-2 border-black rounded-lg",
+            gameBgMap[params.id]
+          )}
+        >
           {games[params.id]}
         </div>
 
