@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import { cn } from "@/utils/helpers";
 
 type pageProps = {};
 
@@ -15,23 +16,26 @@ const Play: React.FC<pageProps> = () => {
   const TestData = [
     { title: "Cars" },
     { title: "Pacman" },
+    // { title: "Card-Memory" },
     { title: "Card-Memory" },
   ];
 
   return (
-    <section className="p-10 flex items-center justify-center gap-4 place-items-center h-full">
-      {TestData.map(({ title }) => (
-        <PLayStrip
-          src={`/${title}.jpg`}
-          key={`play-${title}`}
-          title={title}
-          onClick={() => push(`/play/${title.toLowerCase()}`)}
-        />
-      ))}
+    <section>
+      <div className="p-10 flex items-center justify-center gap-4 place-items-center h-full flex-wrap">
+        {TestData.map(({ title }) => (
+          <PLayStrip
+            src={`/images/${title}.jpg`}
+            key={`play-${title}`}
+            title={title}
+            onClick={() => push(`/play/${title.toLowerCase()}`)}
+          />
+        ))}
+      </div>
 
-      {/* <div className="text-heading text-2xl font-semibold ">
+      <div className="text-heading text-2xl font-semibold text-center">
         More Games Coming Soon!!
-      </div> */}
+      </div>
     </section>
   );
 };
@@ -45,12 +49,18 @@ interface PlayStripProps {
 
 const PLayStrip: React.FC<PlayStripProps> = ({ title, onClick, src }) => (
   <button
+    style={{
+      backgroundImage: `url(${src})`,
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+    }}
     key={title}
-    className=" text-black cursor-pointer border-2 border-black w-96 h-full text-center text-xl font-semibold  transition-all duration-300 ease-in-out rounded-md hover:scale-105"
+    className={cn(
+      "text-black cursor-pointer border-2 border-black w-[30rem] h-96 relative text-center text-xl font-semibold transition-all duration-300 ease-in-out rounded-md"
+    )}
     onClick={onClick}
   >
-    <img src={src} alt={title} className="object-fill w-full h-full" />
-    <div className="p-3 font-raleway font-xl font-semibold bg-[#F9E5C3] text-black rounded-bl-md rounded-md">
+    <div className="p-3 font-raleway font-xl font-semibold bg-[#F9E5C3] text-black rounded-bl-md rounded-br-md absolute bottom-0 w-full">
       {title}
     </div>
   </button>

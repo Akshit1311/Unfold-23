@@ -31,7 +31,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
   const gameBgMap = {
     pacman: "bg-green-400",
     cars: "bg-transparent",
-    "card-memory": "bg-transparent",
+    "card-memory": "bg-[#01B2AD]",
   } as const;
 
   useEffect(() => {
