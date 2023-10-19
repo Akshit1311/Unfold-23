@@ -50,7 +50,7 @@ const Thead: React.FC<Props> = ({ headingArr }) => (
   <div className="border  border-custom-2 mt-5 font-bold flex items-center">
     {headingArr.map((heading) => (
       <div
-        className="md:p-4 p-2  border-l  border-custom-2 flex items-center justify-center w-1/2 text-xs md:text-base"
+        className="md:p-4 p-2 border-l border-custom-2 flex items-center justify-center w-1/2 text-xs md:text-base"
         key={heading}
       >
         {heading}

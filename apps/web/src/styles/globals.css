@@ -33,24 +33,6 @@
   border-radius: 12px;
 }
 
-@keyframes animate-maze {
-  0% {
-    fill: blue;
-  }
-  25% {
-    fill: red;
-  }
-  50% {
-    fill: yellow;
-  }
-  75% {
-    fill: orange;
-  }
-  100% {
-    fill: blue;
-  }
-}
-
 .game-block {
   margin: 0;
   padding: 0;

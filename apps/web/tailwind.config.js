@@ -7,10 +7,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // fontFamily: {
-      //   proto: ["Proto", "sans-serif"],
-      // },
-
       fontFamily: {
         proto: ["Bungee Shade", "sans-serif"],
         roobert: ["Roobert", "sans-serif"],
