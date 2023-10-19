@@ -14,9 +14,9 @@
       ]
     },
     "web#build": {
-      "dependsOn": ["^build", "^op#build"]
+      "dependsOn": ["^build", "^evm#compile"]
     },
-    "op#build": {
+    "evm#compile": {
       "cache": false
     },
     "lint": {},

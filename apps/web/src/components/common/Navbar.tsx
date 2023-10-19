@@ -52,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           role="presentation"
           onClick={() => push("/")}
         >
-          GAME DAY
+          Retroarc
         </h1>
 
         <div>

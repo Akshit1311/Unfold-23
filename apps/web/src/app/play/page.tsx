@@ -12,7 +12,11 @@ const Play: React.FC<pageProps> = () => {
 
   const { push } = useRouter();
 
-  const TestData = [{ title: "Cars" }, { title: "Pacman" }, { title: "Chess" }];
+  const TestData = [
+    { title: "Cars" },
+    { title: "Pacman" },
+    { title: "Card-Memory" },
+  ];
 
   return (
     <section className="p-10 grid grid-cols-3 gap-4 place-items-center  h-full">
