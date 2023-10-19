@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 
 type pageProps = {};
 
