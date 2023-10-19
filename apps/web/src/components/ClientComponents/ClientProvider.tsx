@@ -90,7 +90,7 @@ const ClientProvider: React.FC<ClientProviderProps> = ({ children }) => {
           )}
         >
           <Navbar />
-          <main>{children}</main>
+          <main className="h-full">{children}</main>
         </main>
         {/* {!process.env.NEXT_PUBLIC_IS_LOCAL && <GlassGate />} */}
         <Toaster

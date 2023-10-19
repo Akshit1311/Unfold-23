@@ -19,18 +19,19 @@ const Play: React.FC<pageProps> = () => {
   ];
 
   return (
-    <section className="p-10 grid grid-cols-3 gap-4 place-items-center h-full">
+    <section className="p-10 flex items-center justify-center gap-4 place-items-center h-full">
       {TestData.map(({ title }) => (
         <PLayStrip
+          src={`/${title}.jpg`}
           key={`play-${title}`}
           title={title}
           onClick={() => push(`/play/${title.toLowerCase()}`)}
         />
       ))}
 
-      <div className="text-heading text-2xl font-semibold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      {/* <div className="text-heading text-2xl font-semibold ">
         More Games Coming Soon!!
-      </div>
+      </div> */}
     </section>
   );
 };
@@ -38,15 +39,19 @@ export default Play;
 
 interface PlayStripProps {
   title: string;
+  src: string;
   onClick: () => void;
 }
 
-const PLayStrip: React.FC<PlayStripProps> = ({ title, onClick }) => (
+const PLayStrip: React.FC<PlayStripProps> = ({ title, onClick, src }) => (
   <button
     key={title}
-    className=" text-black cursor-pointer border  h-32 border-custom-2 w-full py-4 px-8 text-center rounded-lg text-xl font-semibold    transition-all duration-300 ease-in-out"
+    className=" text-black cursor-pointer border-2 border-black w-96 h-full text-center text-xl font-semibold  transition-all duration-300 ease-in-out rounded-md hover:scale-105"
     onClick={onClick}
   >
-    {title}
+    <img src={src} alt={title} className="object-fill w-full h-full" />
+    <div className="p-3 font-raleway font-xl font-semibold bg-[#F9E5C3] text-black rounded-bl-md rounded-md">
+      {title}
+    </div>
   </button>
 );

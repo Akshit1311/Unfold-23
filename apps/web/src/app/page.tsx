@@ -15,7 +15,7 @@ function Home() {
         <div className=" text-black text-center mt-3 font-raleway font-semibold tracking-wide">
           Season 1 is just the beginning. There's a lot more coming...
         </div>
-
+        {/* 
         <div className=" my-5 border-2  border-custom-2 rounded-lg flex items-center">
           <div className="p-4  flex items-center justify-center w-1/2 bg-orange-400 text-black">
             1
@@ -29,7 +29,7 @@ function Home() {
           <div className="p-4 border-l  border-custom-2 flex items-center justify-center w-1/2">
             4
           </div>
-        </div>
+        </div> */}
 
         <div className="uppercase text-heading text-center text-xl">
           Rolling 24H Leaderboard
