@@ -59,7 +59,7 @@ const PLayStrip: React.FC<PlayStripProps> = ({ title, onClick, src }) => (
     )}
     onClick={onClick}
   >
-    <div className="p-3 font-raleway font-xl font-semibold bg-[#F9E5C3] text-black rounded-bl-md rounded-br-md absolute bottom-0 w-full">
+    <div className="p-3 font-raleway font-xl font-semibold bg-[#F9E5C3] text-black rounded-bl-md rounded-br-md absolute bottom-0 w-full border-t-2 border-black">
       {title}
     </div>
   </button>
