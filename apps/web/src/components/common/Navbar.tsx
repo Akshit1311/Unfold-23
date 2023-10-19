@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
@@ -22,8 +21,6 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   const { push } = useRouter();
 
-  const { resolvedTheme: currentTheme, setTheme } = useTheme();
-
   // Data
   const NavbarData = [
     {
@@ -36,23 +33,13 @@ const Navbar: React.FC<NavbarProps> = () => {
     },
   ];
 
-  // Handlers
-  const handleTheme = () => {
-    setTheme(currentTheme === "dark" ? "light" : "dark");
-    toast.success(
-      `theme switched to ${
-        currentTheme === "dark" ? "light" : "dark"
-      } successfully!!`
-    );
-  };
-
   const Heading = "Retroarc";
 
   return (
-    <header className="border-b-[1px]  border-black sticky top-0 z-10 backdrop-blur-md px-10 py-5 flex items-center justify-between">
+    <header className="border-b-[1px]  border-black top-0 z-10 backdrop-blur-md px-10 py-5 flex items-center justify-between">
       <div className="flex items-center  gap-8">
         <h1
-          className="text-[#453A21] uppercase font-bold text-4xl cursor-pointer relative -translate-y-1"
+          className="text-[#453A21] uppercase font-bold text-4xl font-proto cursor-pointer relative -translate-y-1"
           role="presentation"
           onClick={() => push("/")}
         >

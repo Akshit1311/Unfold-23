@@ -19,7 +19,7 @@ const Play: React.FC<pageProps> = () => {
   ];
 
   return (
-    <section className="p-10 grid grid-cols-3 gap-4 place-items-center  h-full">
+    <section className="p-10 grid grid-cols-3 gap-4 place-items-center h-full">
       {TestData.map(({ title }) => (
         <PLayStrip
           key={`play-${title}`}
