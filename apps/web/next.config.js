@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["flow"],
+  transpilePackages: ["evm"],
   images: {
     remotePatterns: [
       {

@@ -1,5 +1,5 @@
 import { cn } from "@/utils/helpers";
-import { TChainClient, getUsers } from "op";
+import { getUsers } from "evm";
 import React, { useEffect, useState } from "react";
 import { useAccount, useEnsName, useNetwork } from "wagmi";
 
@@ -13,7 +13,7 @@ const Table: React.FC<TableProps> = () => {
   const [users, setUsers] = useState<Awaited<ReturnType<typeof getUsers>>>([]);
   useEffect(() => {
     (async () => {
-      const _users = await getUsers(chain?.network as TChainClient);
+      const _users = await getUsers();
       console.log({ _users });
 
       setUsers(_users);
