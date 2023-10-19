@@ -15,8 +15,7 @@ const Play: React.FC<pageProps> = () => {
 
   const TestData = [
     { title: "Cars" },
-    { title: "Pacman" },
-    // { title: "Card-Memory" },
+    { title: "Snake" },
     { title: "Card-Memory" },
   ];
 
