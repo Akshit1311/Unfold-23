@@ -1,13 +1,15 @@
 "use client";
+import CardMemory from "@/components/Card-Memory/card-memory";
 import Cars from "@/components/Cars/Cars";
 import MazeGrid from "@/components/Pacman/MazeGrid";
 import { cn } from "@/utils/helpers";
-import { TChainClient, endGame, getUsers, startGame } from "op";
+// import { TChainClient, endGame, getUsers, startGame } from "op";
 import React, { useEffect, useState } from "react";
 import { useNetwork } from "wagmi";
 const games = {
   pacman: <MazeGrid />,
   cars: <Cars />,
+  "card-memory": <CardMemory />,
 } as const;
 
 type TGameState = "idle" | "ongoing";
@@ -15,16 +17,16 @@ type TGameState = "idle" | "ongoing";
 const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
   const { chain } = useNetwork();
 
-  const [users, setUsers] = useState<Awaited<ReturnType<typeof getUsers>>>([]);
+  // const [users, setUsers] = useState<Awaited<ReturnType<typeof getUsers>>>([]);
   const [gameState, setGameState] = useState<TGameState>("idle");
-  useEffect(() => {
-    (async () => {
-      const _users = await getUsers(chain?.network as TChainClient);
-      console.log({ _users });
+  // useEffect(() => {
+  //   (async () => {
+  //     const _users = await getUsers(chain?.network as TChainClient);
+  //     console.log({ _users });
 
-      setUsers(_users);
-    })();
-  }, [gameState]);
+  //     setUsers(_users);
+  //   })();
+  // }, [gameState]);
 
   useEffect(() => {
     console.log({ chain });
@@ -59,14 +61,14 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
                   "bg-zinc-800 py-2 px-4 rounded-lg",
                   gameState === "ongoing" && "opacity-50"
                 )}
-                onClick={async () => {
-                  try {
-                    await startGame(chain?.network as TChainClient);
-                    setGameState("ongoing");
-                  } catch (error) {
-                    console.error(error);
-                  }
-                }}
+                // onClick={async () => {
+                //   try {
+                //     await startGame(chain?.network as TChainClient);
+                //     setGameState("ongoing");
+                //   } catch (error) {
+                //     console.error(error);
+                //   }
+                // }}
               >
                 Start Game
               </button>
@@ -76,20 +78,20 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
                   "bg-zinc-800 py-2 px-4 rounded-lg",
                   gameState === "idle" && "opacity-50"
                 )}
-                onClick={async () => {
-                  try {
-                    await endGame(chain?.network as TChainClient);
-                    setGameState("idle");
-                  } catch (error) {
-                    console.error(error);
-                  }
-                }}
+                // onClick={async () => {
+                //   try {
+                //     await endGame(chain?.network as TChainClient);
+                //     setGameState("idle");
+                //   } catch (error) {
+                //     console.error(error);
+                //   }
+                // }}
               >
                 End Game
               </button>
               <button
                 className="bg-zinc-800 py-2 px-4 rounded-lg"
-                onClick={() => getUsers(chain?.network as TChainClient)}
+                // onClick={() => getUsers(chain?.network as TChainClient)}
               >
                 Get Users
               </button>
@@ -101,7 +103,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
               Leaderboard
             </h1>
 
-            {[...users]
+            {/* {[...users]
               .sort((a, b) => (a.xp < b.xp ? 1 : -1))
               .filter(({ isOwner, xp }) => !isOwner && xp)
               .map(({ userAddress, xp }, i) => (
@@ -112,7 +114,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
                     { title: "XP", desc: xp.toString() },
                   ]}
                 />
-              ))}
+              ))} */}
           </div>
         </div>
       </div>

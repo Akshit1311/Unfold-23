@@ -23,7 +23,7 @@ const Table: React.FC<TableProps> = () => {
   return (
     <div className="mt-4 mx-auto  text-center">
       <Thead headingArr={TableHeading} />
-      {[...users]
+      {/* {[...users]
         .sort((a, b) => (a.xp < b.xp ? 1 : -1))
         .filter(({ isOwner, xp }) => !isOwner && xp)
         .map(({ userAddress, xp }, i) => (
@@ -36,7 +36,7 @@ const Table: React.FC<TableProps> = () => {
             index={i}
             isYou={userAddress === address}
           />
-        ))}
+        ))} */}
     </div>
   );
 };

@@ -5,7 +5,7 @@ const REDIRECT_URI = "https://sui.io/";
 
 const FULLNODE_URL = "https://fullnode.devnet.sui.io";
 const suiClient = new SuiClient({ url: FULLNODE_URL });
-const getEpoch = async () => {
+export const getEpoch = async () => {
   const { epoch, epochDurationMs, epochStartTimestampMs } =
     await suiClient.getLatestSuiSystemState();
   const maxEpoch = Number(epoch) + 2;
@@ -17,7 +17,7 @@ const getEpoch = async () => {
     randomness
   );
   const params = new URLSearchParams({
-    client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
+    client_id: process.env.GOOGLE_CLIENT_ID!,
     redirect_uri: REDIRECT_URI,
     response_type: "id_token",
     scope: "openid",
@@ -26,5 +26,3 @@ const getEpoch = async () => {
   return params;
 };
 const params = getEpoch();
-
-export const loginURL = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;

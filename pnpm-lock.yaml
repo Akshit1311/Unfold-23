@@ -71,6 +71,9 @@ importers:
       react:
         specifier: 18.2.0
         version: 18.2.0
+      react-card-memory-game:
+        specifier: ^1.1.6
+        version: 1.1.6(react@18.2.0)
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
@@ -7945,6 +7948,15 @@ packages:
       strip-json-comments: 2.0.1
     dev: true
 
+  /react-card-memory-game@1.1.6(react@18.2.0):
+    resolution: {integrity: sha512-HESHZwdQ2RUQNXaHs04jx3H+/6r77Y/gg2RODS1Smmh/1P2cKNCFNQgU1W5AFX958fuvPpj06ojCK0GhfiM7Ig==}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      react: 18.2.0
+      reactjs-flip-card: 1.1.2(react@18.2.0)
+    dev: false
+
   /react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
@@ -8038,6 +8050,14 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
+
+  /reactjs-flip-card@1.1.2(react@18.2.0):
+    resolution: {integrity: sha512-iNIInrvjUbZd9SO74GdAVFNv9hUFUvAjjfXeXbwFgiRRdq8VFuGeOqa0UGD3tY9ACl82XHjG1JWTna+JV8+zVQ==}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /read-cache@1.0.0:

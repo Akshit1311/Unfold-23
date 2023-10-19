@@ -1,11 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Raleway:wght@300;400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
+/* @font-face {
   font-family: "Proto";
-  src: url("/font/ProtoMono-Medium.woff");
-}
+  src: url("/font/Roobert-Regular.ttf");
+} */
 
 .noScrollbar::-webkit-scrollbar {
   width: 0px;

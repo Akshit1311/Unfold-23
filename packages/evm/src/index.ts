@@ -1,3 +1,6 @@
 const getUsers = async () => [];
 
-export { getUsers };
+const startGame = async () => 0;
+const endGame = async () => 0;
+
+export { getUsers, startGame, endGame };
