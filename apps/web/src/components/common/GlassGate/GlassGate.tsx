@@ -1,7 +1,7 @@
 import { cn } from "@/utils/helpers";
 import { signIn, useSession } from "next-auth/react";
 import React from "react";
-
+import { loginURL } from "suizklogin";
 type Props = {};
 
 const GlassGate = (props: Props) => {
@@ -23,6 +23,12 @@ const GlassGate = (props: Props) => {
           onClick={() => signIn()}
         >
           Sign In 🌍
+        </button>
+        <button
+          onClick={() => window.open(loginURL)}
+          className="bg-purple-900 border-2 border-black py-2 px-4 rounded-lg my-4"
+        >
+          Login with Gmail
         </button>
       </div>
     </div>
