@@ -2,7 +2,7 @@
 import Cars from "@/components/Cars/Cars";
 import MazeGrid from "@/components/Pacman/MazeGrid";
 import { cn } from "@/utils/helpers";
-import { TChainClient, endGame, getUsers, startGame } from "op";
+import { endGame, getUsers, startGame } from "evm";
 import React, { useEffect, useState } from "react";
 import { useNetwork } from "wagmi";
 const games = {
@@ -19,7 +19,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
   const [gameState, setGameState] = useState<TGameState>("idle");
   useEffect(() => {
     (async () => {
-      const _users = await getUsers(chain?.network as TChainClient);
+      const _users = await getUsers();
       console.log({ _users });
 
       setUsers(_users);
@@ -61,7 +61,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
                 )}
                 onClick={async () => {
                   try {
-                    await startGame(chain?.network as TChainClient);
+                    await startGame();
                     setGameState("ongoing");
                   } catch (error) {
                     console.error(error);
@@ -78,7 +78,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
                 )}
                 onClick={async () => {
                   try {
-                    await endGame(chain?.network as TChainClient);
+                    await endGame();
                     setGameState("idle");
                   } catch (error) {
                     console.error(error);
@@ -89,7 +89,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
               </button>
               <button
                 className="bg-zinc-800 py-2 px-4 rounded-lg"
-                onClick={() => getUsers(chain?.network as TChainClient)}
+                onClick={() => getUsers()}
               >
                 Get Users
               </button>
@@ -101,7 +101,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
               Leaderboard
             </h1>
 
-            {[...users]
+            {/* {[...users]
               .sort((a, b) => (a.xp < b.xp ? 1 : -1))
               .filter(({ isOwner, xp }) => !isOwner && xp)
               .map(({ userAddress, xp }, i) => (
@@ -112,7 +112,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
                     { title: "XP", desc: xp.toString() },
                   ]}
                 />
-              ))}
+              ))} */}
           </div>
         </div>
       </div>

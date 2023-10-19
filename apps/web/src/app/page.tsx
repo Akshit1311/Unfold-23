@@ -1,12 +1,12 @@
 "use client";
 
 import Table from "@/components/Table/Table";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 
 function Home() {
-  const { data: session, status } = useSession();
+  //   const { data: session, status } = useSession();
 
-  if (status === "loading") return <div>Loading...</div>;
+  //   if (status === "loading") return <div>Loading...</div>;
 
   return (
     <section className="  text-black max-w-7xl  mx-auto py-10">

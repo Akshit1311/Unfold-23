@@ -2,14 +2,13 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 
 type pageProps = {};
 
 const Play: React.FC<pageProps> = () => {
-  const { data: session, status } = useSession({ required: true });
+  // const { data: session, status } = useSession({ required: true });
 
-  if (status === "loading") return <div>Loading...</div>;
+  // if (status === "loading") return <div>Loading...</div>;
 
   const { push } = useRouter();
 
