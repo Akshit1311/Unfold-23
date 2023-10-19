@@ -8,12 +8,15 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "turbo run test",
-    "test:watch": "turbo run test:watch"
+    "test:watch": "turbo run test:watch",
+    "docker:build": "export DOCKER_DEFAULT_PLATFORM=linux/amd64 && sudo docker build -t unfold .",
+    "docker:run": "sudo docker run -p 3000:3000 unfold",
+    "docker:tag": "sudo docker tag unfold a4748g/unfold",
+    "docker:push": "sudo docker push a4748g/unfold"
   },
   "devDependencies": {
     "@turbo/gen": "^1.10.7",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
     "prettier": "^2.8.8",
     "turbo": "latest"
   },

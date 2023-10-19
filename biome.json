@@ -1,0 +1,44 @@
+{
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noConsoleLog": "warn",
+        "noRedeclare": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "off"
+      },
+      "a11y": {
+        "useKeyWithClickEvents": "off",
+        "noSvgWithoutTitle": "off"
+      }
+    },
+    "ignore": [
+      "node_modules",
+      ".next",
+      "dist",
+      ".turbo",
+      "**/**/*.js",
+      "**/**/*.d.ts",
+      "public/mocap"
+    ]
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "enabled": true,
+    "ignore": [
+      "node_modules",
+      ".next",
+      "dist",
+      "gen/*",
+      ".turbo",
+      "**/**/*.js",
+      "**/**/*.d.ts",
+      "public/mocap"
+    ],
+    "formatWithErrors": false
+  }
+}
