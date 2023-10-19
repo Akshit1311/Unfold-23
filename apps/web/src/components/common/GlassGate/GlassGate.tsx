@@ -15,8 +15,8 @@ const GlassGate = (props: Props) => {
       )}
     >
       <div className="text-center">
-        <div className="text-heading text-6xl font-semibold">
-          Game Day 1.0 👾
+        <div className="text-heading text-6xl font-semibold uppercase">
+          retroarc 1.0 👾
         </div>
         <button
           className="bg-purple-900 border-2 border-black py-2 px-4 rounded-lg my-4"
