@@ -1,7 +1,8 @@
 "use client";
-import CardMemory from "@/components/Card-Memory/card-memory";
-import Cars from "@/components/Cars/Cars";
-import Snake from "@/components/Snake/Snake";
+import CardMemory from "@/components/Games/Card-Memory/card-memory";
+import Cars from "@/components/Games/Cars/Cars";
+import TetrisGame from "@/components/Games/Tetris/Tetris";
+import Snake from "@/components/Games/Snake/Snake";
 import { cn } from "@/utils/helpers";
 // import { TChainClient, endGame, getUsers, startGame } from "op";
 import React, { useEffect, useState } from "react";
@@ -9,6 +10,7 @@ import { useNetwork } from "wagmi";
 const games = {
   snake: <Snake />,
   cars: <Cars />,
+  tetris: <TetrisGame />,
   "card-memory": <CardMemory />,
 } as const;
 
@@ -31,6 +33,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
   const gameBgMap = {
     snake: "#bdc3c7",
     cars: "bg-transparent",
+    tetris: "bg-transparent",
     "card-memory": "bg-[#01B2AD]",
   } as const;
 
