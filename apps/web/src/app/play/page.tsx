@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import { cn } from "@/utils/helpers";
 
 type pageProps = {};
 
@@ -14,21 +15,24 @@ const Play: React.FC<pageProps> = () => {
 
   const TestData = [
     { title: "Cars" },
-    { title: "Pacman" },
+    { title: "Snake" },
     { title: "Card-Memory" },
   ];
 
   return (
-    <section className="p-10 grid grid-cols-3 gap-4 place-items-center  h-full">
-      {TestData.map(({ title }) => (
-        <PLayStrip
-          key={`play-${title}`}
-          title={title}
-          onClick={() => push(`/play/${title.toLowerCase()}`)}
-        />
-      ))}
+    <section>
+      <div className="p-10 flex items-center justify-center gap-4 place-items-center h-full flex-wrap">
+        {TestData.map(({ title }) => (
+          <PLayStrip
+            src={`/images/${title}.jpg`}
+            key={`play-${title}`}
+            title={title}
+            onClick={() => push(`/play/${title.toLowerCase()}`)}
+          />
+        ))}
+      </div>
 
-      <div className="text-heading text-2xl font-semibold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div className="text-heading text-2xl font-semibold text-center">
         More Games Coming Soon!!
       </div>
     </section>
@@ -38,15 +42,25 @@ export default Play;
 
 interface PlayStripProps {
   title: string;
+  src: string;
   onClick: () => void;
 }
 
-const PLayStrip: React.FC<PlayStripProps> = ({ title, onClick }) => (
+const PLayStrip: React.FC<PlayStripProps> = ({ title, onClick, src }) => (
   <button
+    style={{
+      backgroundImage: `url(${src})`,
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+    }}
     key={title}
-    className=" text-black cursor-pointer border  h-32 border-custom-2 w-full py-4 px-8 text-center rounded-lg text-xl font-semibold    transition-all duration-300 ease-in-out"
+    className={cn(
+      "text-black cursor-pointer border-2 border-black w-[30rem] h-96 relative text-center text-xl font-semibold transition-all duration-300 ease-in-out rounded-md"
+    )}
     onClick={onClick}
   >
-    {title}
+    <div className="p-3 font-raleway font-xl font-semibold bg-[#F9E5C3] text-black rounded-bl-md rounded-br-md absolute bottom-0 w-full border-t-2 border-black">
+      {title}
+    </div>
   </button>
 );

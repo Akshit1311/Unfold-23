@@ -7,10 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        proto: ["Proto", "sans-serif"],
-      },
+      // fontFamily: {
+      //   proto: ["Proto", "sans-serif"],
+      // },
 
+      fontFamily: {
+        proto: ["Bungee Shade", "sans-serif"],
+        roobert: ["Roobert", "sans-serif"],
+        raleway: ["Raleway", "sans-serif"],
+      },
       gridTemplateColumns: {
         // Simple 16 column grid
         28: "repeat(28, minmax(0, 1fr))",

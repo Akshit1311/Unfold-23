@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
@@ -12,6 +11,7 @@ import { Moon, Sun } from "@/assets/icons";
 
 // Components
 import { toast } from "react-hot-toast";
+import { cn } from "@/utils/helpers";
 // import { getUsers, startGame, endGame } from "evm";
 
 type NavbarProps = {};
@@ -20,8 +20,6 @@ const Navbar: React.FC<NavbarProps> = () => {
   const { data: session } = useSession();
 
   const { push } = useRouter();
-
-  const { resolvedTheme: currentTheme, setTheme } = useTheme();
 
   // Data
   const NavbarData = [
@@ -35,24 +33,17 @@ const Navbar: React.FC<NavbarProps> = () => {
     },
   ];
 
-  // Handlers
-  const handleTheme = () => {
-    setTheme(currentTheme === "dark" ? "light" : "dark");
-    toast.success(
-      `theme switched to ${
-        currentTheme === "dark" ? "light" : "dark"
-      } successfully!!`
-    );
-  };
+  const Heading = "Retroarc";
+
   return (
-    <header className="border-b  border-gray-500 sticky top-0 z-10 backdrop-blur-md px-10 py-5 flex items-center justify-between">
-      <div className="flex items-center gap-8">
+    <header className="border-b-[1px]  border-black top-0 z-10 backdrop-blur-md px-10 py-5 flex items-center justify-between">
+      <div className="flex items-center  gap-8">
         <h1
-          className="text-heading uppercase font-semibold text-2xl cursor-pointer"
+          className="text-[#453A21] uppercase font-bold text-4xl font-proto cursor-pointer relative -translate-y-1"
           role="presentation"
           onClick={() => push("/")}
         >
-          Retroarc
+          {Heading}
         </h1>
 
         <div>
@@ -60,7 +51,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             {NavbarData.map(({ route, title }) => (
               <li
                 key={`navbar-${title}`}
-                className="text-base font-medium cursor-pointer first:ml-0 ml-4"
+                className="text-lg font-raleway font-semibold tracking-widest cursor-pointer first:ml-0 ml-4 uppercase"
                 onClick={() => push(route)}
               >
                 {title}
