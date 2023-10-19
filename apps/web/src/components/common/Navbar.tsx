@@ -12,6 +12,7 @@ import { Moon, Sun } from "@/assets/icons";
 // Components
 import { toast } from "react-hot-toast";
 import { cn } from "@/utils/helpers";
+import { googleSignIn } from "@/app/actions";
 // import { getUsers, startGame, endGame } from "evm";
 
 type NavbarProps = {};
@@ -61,10 +62,10 @@ const Navbar: React.FC<NavbarProps> = () => {
           </ul>
         </div>
       </div>
-      <div className="flex items-center gap-4">
+      <form action={googleSignIn} className="flex items-center gap-4">
         <ConnectButton />
         <button
-          onClick={() => router.push("/items")}
+          // onClick={() => router.push("/items")}
           className="bg-purple-900 border-2 border-black py-2 px-4 rounded-lg my-4"
         >
           Login with Gmail
@@ -77,7 +78,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             Sign Out
           </button>
         )}
-      </div>
+      </form>
     </header>
   );
 };

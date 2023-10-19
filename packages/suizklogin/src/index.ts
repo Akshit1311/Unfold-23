@@ -16,6 +16,9 @@ export const getEpoch = async () => {
     maxEpoch,
     randomness
   );
+
+  console.log({ GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID });
+
   const params = new URLSearchParams({
     client_id: process.env.GOOGLE_CLIENT_ID!,
     redirect_uri: REDIRECT_URI,
