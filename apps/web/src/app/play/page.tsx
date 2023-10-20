@@ -20,7 +20,7 @@ const Play: React.FC = () => {
 
   return (
     <section>
-      <div className="pt-28 flex items-center justify-center gap-4 place-items-center h-full flex-wrap">
+      <div className="pt-28 px-10 flex items-center justify-center gap-4 place-items-center h-full flex-wrap border">
         {TestData.map(({ title }) => (
           <PLayStrip
             src={`/images/${title}.jpg`}
@@ -55,7 +55,7 @@ const PLayStrip: React.FC<PlayStripProps> = ({ title, onClick, src }) => (
     }}
     key={title}
     className={cn(
-      "text-black cursor-pointer border-2 border-black w-[30rem] h-96 relative text-center text-xl font-semibold transition-all duration-300 ease-in-out rounded-md"
+      "text-black cursor-pointer border-2 border-black w-96 h-80 relative text-center text-xl font-semibold transition-all duration-300 ease-in-out rounded-md"
     )}
     onClick={onClick}
   >

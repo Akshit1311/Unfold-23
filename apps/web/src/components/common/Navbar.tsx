@@ -25,10 +25,10 @@ const Navbar: React.FC = () => {
       title: "Play Games",
       route: "/play",
     },
-    // {
-    //   title: "Marketplace",
-    //   route: "/marketplace",
-    // },
+    {
+      title: "Marketplace",
+      route: "/marketplace",
+    },
   ];
 
   const Heading = "Retroarc";
