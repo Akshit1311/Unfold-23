@@ -4,9 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/utils/helpers";
 
-type pageProps = {};
-
-const Play: React.FC<pageProps> = () => {
+const Play: React.FC = () => {
   // const { data: session, status } = useSession({ required: true });
 
   // if (status === "loading") return <div>Loading...</div>;
@@ -16,12 +14,13 @@ const Play: React.FC<pageProps> = () => {
   const TestData = [
     { title: "Cars" },
     { title: "Snake" },
+    { title: "Tetris" },
     { title: "Card-Memory" },
   ];
 
   return (
     <section>
-      <div className="p-10 flex items-center justify-center gap-4 place-items-center h-full flex-wrap">
+      <div className="pt-28 flex items-center justify-center gap-4 place-items-center h-full flex-wrap">
         {TestData.map(({ title }) => (
           <PLayStrip
             src={`/images/${title}.jpg`}
@@ -48,6 +47,7 @@ interface PlayStripProps {
 
 const PLayStrip: React.FC<PlayStripProps> = ({ title, onClick, src }) => (
   <button
+    type="button"
     style={{
       backgroundImage: `url(${src})`,
       backgroundPosition: "center",

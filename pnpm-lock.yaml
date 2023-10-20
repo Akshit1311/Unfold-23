@@ -86,6 +86,9 @@ importers:
       react-hot-toast:
         specifier: ^2.4.1
         version: 2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0)
+      react-tetris:
+        specifier: ^0.3.0
+        version: 0.3.0(react-dom@18.2.0)(react@18.2.0)
       suizklogin:
         specifier: workspace:*
         version: link:../../packages/suizklogin
@@ -5861,6 +5864,10 @@ packages:
       node-gyp-build: 4.6.0
       readable-stream: 3.6.2
 
+  /keymaster@1.6.2:
+    resolution: {integrity: sha512-OvA/AALN8IDKKkTk2Z+bDrzs/SQao4lo/QPbwSdDvm+frxfiYiYCSn1aHFUypJY3SruAO1y/c771agBmTXqUtg==}
+    dev: false
+
   /keyvaluestorage-interface@1.0.0:
     resolution: {integrity: sha512-8t6Q3TclQ4uZynJY9IGr2+SsIGwK9JHcO6ootkHCGA0CrQCRy+VkouYNO2xicET6b9al7QKzpebNow+gkpCL8g==}
     dev: false
@@ -7191,6 +7198,17 @@ packages:
       invariant: 2.2.4
       react: 18.2.0
       tslib: 2.6.0
+    dev: false
+
+  /react-tetris@0.3.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-tb5vcF/SwNbLmUSEgLfJxXzLc4laG0elbJ4RNQpZ0iVFm6YFz5z5Sy6zMd9nXYProCAJwgheWd5OdgOxwTujBA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0
+      react-dom: ^16.8.0 || ^17.0.0
+    dependencies:
+      keymaster: 1.6.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react@16.14.0:

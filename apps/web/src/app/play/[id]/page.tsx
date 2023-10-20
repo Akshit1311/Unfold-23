@@ -1,14 +1,16 @@
 "use client";
-import CardMemory from "@/components/Card-Memory/card-memory";
-import Cars from "@/components/Cars/Cars";
-import Snake from "@/components/Snake/Snake";
+import CardMemory from "@/components/Games/Card-Memory/card-memory";
+import Cars from "@/components/Games/Cars/Cars";
+import TetrisGame from "@/components/Games/Tetris/Tetris";
+import Snake from "@/components/Games/Snake/Snake";
 import { cn } from "@/utils/helpers";
 // import { TChainClient, endGame, getUsers, startGame } from "op";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNetwork } from "wagmi";
 const games = {
   snake: <Snake />,
   cars: <Cars />,
+  tetris: <TetrisGame />,
   "card-memory": <CardMemory />,
 } as const;
 
@@ -31,12 +33,9 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
   const gameBgMap = {
     snake: "#bdc3c7",
     cars: "bg-transparent",
+    tetris: "bg-transparent",
     "card-memory": "bg-[#01B2AD]",
   } as const;
-
-  useEffect(() => {
-    console.log({ chain });
-  }, [chain]);
 
   return (
     <section className=" text-black px-10 py-6 flex items-center w-full flex-col">
@@ -68,9 +67,10 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
             <h1 className="text-heading text-xl font-semibold mb-1">Actions</h1>
             <div className="flex gap-2">
               <button
+                type="button"
                 disabled={gameState === "ongoing"}
                 className={cn(
-                  "bg-zinc-800 py-2 px-4 rounded-lg",
+                  "bg-green-400 py-2 px-4 rounded-lg text-white",
                   gameState === "ongoing" && "opacity-50"
                 )}
                 // onClick={async () => {
@@ -85,9 +85,10 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
                 Start Game
               </button>
               <button
+                type="button"
                 disabled={gameState === "idle"}
                 className={cn(
-                  "bg-zinc-800 py-2 px-4 rounded-lg",
+                  "bg-red-500 py-2 px-4 rounded-lg text-white",
                   gameState === "idle" && "opacity-50"
                 )}
                 // onClick={async () => {
@@ -102,7 +103,8 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
                 End Game
               </button>
               <button
-                className="bg-zinc-800 py-2 px-4 rounded-lg"
+                type="button"
+                className="bg-yellow-400 text-white py-2 px-4 rounded-lg"
                 // onClick={() => getUsers(chain?.network as TChainClient)}
               >
                 Get Users
@@ -153,12 +155,11 @@ const AboutGameStrip: React.FC<AboutGameStripProps> = ({
       className
     )}
   >
-    {AboutGameStripData &&
-      AboutGameStripData.map(({ desc, title }) => (
-        <div key={`about-game-${title}`}>
-          <div className="text-base font-semibold text-heading">{title}</div>
-          <div className="text-sm font-normal">{desc}</div>
-        </div>
-      ))}
+    {AboutGameStripData?.map(({ desc, title }) => (
+      <div key={`about-game-${title}`}>
+        <div className="text-base font-semibold text-heading">{title}</div>
+        <div className="text-sm font-normal">{desc}</div>
+      </div>
+    ))}
   </div>
 );

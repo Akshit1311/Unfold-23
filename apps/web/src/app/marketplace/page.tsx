@@ -13,9 +13,7 @@ import { mintNft } from "@/utils/mintNft/mintNft";
 import { useHashAtom } from "@/atoms/hash.atom";
 import Image from "next/image";
 
-type pageProps = {};
-
-const Marketplace: React.FC<pageProps> = () => {
+const Marketplace: React.FC = () => {
   // const [hash, setHash] = useHashAtom();
   // const { address } = useAccount();
   // // Handlers
@@ -42,7 +40,7 @@ const Marketplace: React.FC<pageProps> = () => {
             <div>Price: 0.02 ETH</div>
           </div>
 
-          <div className="bg-blue-500 rounded-lg px-4 py-2 text-center">
+          <div className="bg-green-400 text-white rounded-lg px-4 py-2 text-center">
             Buy Now
           </div>
         </div>
@@ -56,7 +54,7 @@ const Marketplace: React.FC<pageProps> = () => {
             /> */}
             <div>Price: 0.03 ETH</div>
           </div>
-          <div className="bg-blue-500 rounded-lg px-4 py-2 text-center">
+          <div className="bg-green-400 text-white rounded-lg px-4 py-2 text-center">
             Buy Now
           </div>
         </div>

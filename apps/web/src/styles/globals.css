@@ -5,10 +5,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-}
-
 /* @font-face {
   font-family: "Proto";
   src: url("/font/Roobert-Regular.ttf");
@@ -37,27 +33,38 @@
   border-radius: 12px;
 }
 
-/* #maze path {
-  fill: blue;
-  animation-name: animate-maze;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
-} */
+.game-block {
+  margin: 0;
+  padding: 0;
+  width: 1.8em;
+  height: 1.8em;
+  border: 2px solid #7e7e7e;
+}
+.piece-i {
+  background-color: #ea4951;
+}
+.piece-j {
+  background-color: #ec7032;
+}
+.piece-l {
+  background-color: #f8db04;
+}
+.piece-o {
+  background-color: #13f48f;
+}
+.piece-s {
+  background-color: #0f49e8;
+}
+.piece-t {
+  background-color: #24a6eb;
+}
+.piece-z {
+  background-color: #e425c1;
+}
+.piece-preview {
+  background-color: #ccc;
+}
 
-@keyframes animate-maze {
-  0% {
-    fill: blue;
-  }
-  25% {
-    fill: red;
-  }
-  50% {
-    fill: yellow;
-  }
-  75% {
-    fill: orange;
-  }
-  100% {
-    fill: blue;
-  }
+.piece-view {
+  margin-bottom: 0.25rem;
 }
