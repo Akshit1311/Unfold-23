@@ -12,6 +12,8 @@ import { Moon, Sun } from "@/assets/icons";
 // Components
 import { toast } from "react-hot-toast";
 import { cn } from "@/utils/helpers";
+import { useWallet } from "@suiet/wallet-kit";
+import ThreeDButton from "./ThreeDButton";
 // import { getUsers, startGame, endGame } from "evm";
 
 const Navbar: React.FC = () => {
@@ -32,6 +34,8 @@ const Navbar: React.FC = () => {
   ];
 
   const Heading = "Retroarc";
+
+  const wallet = useWallet();
 
   return (
     <header className="border-b border-black absolute w-full bg-white top-0 z-10 backdrop-blur-md px-10 py-5 flex items-center justify-between">
@@ -59,16 +63,15 @@ const Navbar: React.FC = () => {
         </div>
       </div>
       <div className="flex items-center gap-4">
-        <ConnectButton />
-
-        {session && (
-          <button
-            type="button"
-            className="bg-zinc-800 py-2 px-4 rounded-lg"
-            onClick={() => signOut()}
-          >
-            Sign Out
-          </button>
+        {/* {wallet?.address || <ConnectButton />} */}
+        <div className="font-bold text-lg">{wallet?.address?.slice(0, 6)}</div>
+        {wallet.connected && (
+          <ThreeDButton
+            variant="btn-danger"
+            className="text-lg py-1 px-3 rounded-lg my-4 text-white"
+            onClick={wallet.disconnect}
+            title="disconnect"
+          />
         )}
       </div>
     </header>
