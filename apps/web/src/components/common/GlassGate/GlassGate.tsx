@@ -1,26 +1,40 @@
 import { cn } from "@/utils/helpers";
-import React from "react";
+import React, { useState } from "react";
+import ThreeDButton from "../ThreeDButton";
+import { TGameType } from "@/constants";
 
-const GlassGate = () => {
+const emojis: Record<TGameType, string> = {
+  cars: "🚘",
+  snake: "🐍",
+  tetris: "🟦🟪",
+  cards: "🃏",
+};
+
+type Props = {
+  title?: string;
+  gameType?: TGameType;
+};
+
+const GlassGate = ({ title, gameType }: Props) => {
+  const [isGlassDoorOpen, setIsGlassDoorOpen] = useState(false);
+
   return (
     <div
       className={cn(
-        "font-proto grid place-items-center bg-slate-800/70 backdrop-blur-md fixed inset-0 z-30 transition-all ease-in-out delay-150 duration-600",
-        "-translate-y-full"
-        // !!session && "-translate-y-full"
+        "font-proto grid place-items-center bg-slate-500/50 backdrop-blur-lg fixed inset-0 z-50 transition-all ease-in  duration-500",
+        isGlassDoorOpen && "-translate-y-full"
       )}
     >
       <div className="text-center">
-        <div className="text-heading text-6xl font-semibold uppercase">
-          retroarc 👾
+        <div className=" text-9xl font-semibold uppercase mb-10">
+          {title || "retroarc"} {gameType ? emojis[gameType] : "👾"}
         </div>
-        <button
-          type="button"
-          className="bg-blue-400 border-2 border-black py-2 px-4 rounded-lg my-4 text-white"
-          onClick={() => alert("todo")}
-        >
-          Sign In 🌍
-        </button>
+        <ThreeDButton
+          variant="btn-magick"
+          className="text-3xl py-5 px-10 rounded-lg my-4 text-white"
+          onClick={() => setIsGlassDoorOpen(true)}
+          title="Sign In 🌍"
+        />
       </div>
     </div>
   );

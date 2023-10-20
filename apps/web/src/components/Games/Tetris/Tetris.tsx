@@ -1,10 +1,11 @@
+import { setGameState } from "@/atoms/gameState.atom";
 import { setPointsAtom } from "@/atoms/points.atom";
-import React from "react";
+import React, { useEffect } from "react";
 import Tetris from "react-tetris";
 
 const TetrisGame: React.FC = () => {
   const setAtom = setPointsAtom();
-
+  const seState = setGameState();
   return (
     <div>
       <Tetris
@@ -27,6 +28,7 @@ const TetrisGame: React.FC = () => {
           state,
         }) => {
           setAtom(points);
+          seState(state);
 
           return (
             <div className="flex items-start gap-10 w-full">
@@ -44,7 +46,6 @@ const TetrisGame: React.FC = () => {
                     role="presentation"
                     className="cursor-pointer"
                     onClick={() => {
-                      setAtom(points);
                       controller.restart();
                     }}
                   >

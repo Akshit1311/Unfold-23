@@ -7,19 +7,18 @@ import { cn } from "@/utils/helpers";
 // import { TChainClient, endGame, getUsers, startGame } from "op";
 import React, { useState } from "react";
 import GameStatus from "@/components/GameStatus/GameStatus";
+import { gameBgMap } from "@/constants";
 const games = {
   snake: <Snake />,
   cars: <Cars />,
   tetris: <TetrisGame />,
-  "card-memory": <CardMemory />,
+  cards: <CardMemory />,
 } as const;
 
 export type TGameState = "idle" | "ongoing";
 
 const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
   // const [users, setUsers] = useState<Awaited<ReturnType<typeof getUsers>>>([]);
-
-  const [score, setScore] = useState<number>(0);
 
   // useEffect(() => {
   //   (async () => {
@@ -29,13 +28,6 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
   //     setUsers(_users);
   //   })();
   // }, [gameState]);
-
-  const gameBgMap = {
-    snake: "#bdc3c7",
-    cars: "bg-transparent",
-    tetris: "bg-transparent",
-    "card-memory": "bg-[#01B2AD]",
-  } as const;
 
   const gameKeyMap = {
     snake: {
@@ -62,7 +54,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
       r: "reset",
       k: "swipe camera",
     },
-    "card-memory": {
+    cards: {
       "mouse-click/left-click": "select",
     },
   } as const;
@@ -80,6 +72,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
               gameBgMap[params.id]
             )}
           >
+            {/* "Game not started yet" */}
             {games[params.id]}
           </div>
 

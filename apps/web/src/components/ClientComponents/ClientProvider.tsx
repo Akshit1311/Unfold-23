@@ -30,7 +30,11 @@ import { cn } from "@/utils/helpers";
 // Components
 import Navbar from "../common/Navbar";
 import { publicClient } from "@/client/client";
+import GlassGate from "../common/GlassGate/GlassGate";
 // import GlassGate from "../common/GlassGate/GlassGate";
+
+import { useParams } from "next/navigation";
+import { TGameType } from "@/constants";
 
 type ClientProviderProps = {
   children: React.ReactNode;
@@ -75,6 +79,8 @@ const wagmiConfig = createConfig({
 const ClientProvider: React.FC<ClientProviderProps> = ({ children }) => {
   const [isMounted, setIsMounted] = useState(false);
 
+  const params = useParams();
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -92,7 +98,7 @@ const ClientProvider: React.FC<ClientProviderProps> = ({ children }) => {
           <Navbar />
           <main className="min-h-screen bg-[#F4F4F5]">{children}</main>
         </main>
-        {/* {!process.env.NEXT_PUBLIC_IS_LOCAL && <GlassGate />} */}
+        <GlassGate title={params.id} gameType={params.id as TGameType} />
         <Toaster
           containerStyle={{
             bottom: "70px",
