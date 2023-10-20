@@ -20,7 +20,7 @@ const Play: React.FC = () => {
 
   return (
     <section>
-      <div className="p-10 flex items-center justify-center gap-4 place-items-center h-full flex-wrap">
+      <div className="pt-28 flex items-center justify-center gap-4 place-items-center h-full flex-wrap">
         {TestData.map(({ title }) => (
           <PLayStrip
             src={`/images/${title}.jpg`}

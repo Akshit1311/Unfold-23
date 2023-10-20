@@ -14,9 +14,7 @@ import { toast } from "react-hot-toast";
 import { cn } from "@/utils/helpers";
 // import { getUsers, startGame, endGame } from "evm";
 
-type NavbarProps = {};
-
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC = () => {
   const { data: session } = useSession();
 
   const { push } = useRouter();
@@ -27,16 +25,16 @@ const Navbar: React.FC<NavbarProps> = () => {
       title: "Play Games",
       route: "/play",
     },
-    {
-      title: "Marketplace",
-      route: "/marketplace",
-    },
+    // {
+    //   title: "Marketplace",
+    //   route: "/marketplace",
+    // },
   ];
 
   const Heading = "Retroarc";
 
   return (
-    <header className="border-b-[1px]  border-black top-0 z-10 backdrop-blur-md px-10 py-5 flex items-center justify-between">
+    <header className="border-b border-black absolute w-full bg-white top-0 z-10 backdrop-blur-md px-10 py-5 flex items-center justify-between">
       <div className="flex items-center  gap-8">
         <h1
           className="text-[#453A21] uppercase font-bold text-4xl font-proto cursor-pointer relative -translate-y-1"
@@ -65,6 +63,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
         {session && (
           <button
+            type="button"
             className="bg-zinc-800 py-2 px-4 rounded-lg"
             onClick={() => signOut()}
           >

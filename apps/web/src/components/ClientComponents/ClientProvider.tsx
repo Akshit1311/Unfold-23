@@ -90,7 +90,7 @@ const ClientProvider: React.FC<ClientProviderProps> = ({ children }) => {
           )}
         >
           <Navbar />
-          <main className="h-full">{children}</main>
+          <main className="min-h-screen bg-[#F4F4F5]">{children}</main>
         </main>
         {/* {!process.env.NEXT_PUBLIC_IS_LOCAL && <GlassGate />} */}
         <Toaster
