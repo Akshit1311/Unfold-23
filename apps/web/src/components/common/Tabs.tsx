@@ -11,7 +11,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab }) => {
   return (
     <div className="mt-4 w-1/2 mx-auto">
       <div className=" bg-[#90D5CA]/60 p-4 rounded-2xl grid grid-cols-3 shadow-inner">
-        {["24", "season", "all"].map((val) => (
+        {["24", "Season", "All"].map((val) => (
           <button
             onClick={() => setActiveTab(val as TActiveTab)}
             type="button"

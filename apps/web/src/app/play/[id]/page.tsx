@@ -71,6 +71,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
             <h1 className="text-heading text-xl font-semibold mb-1">Actions</h1>
             <div className="flex gap-2">
               <button
+                type="button"
                 disabled={gameState === "ongoing"}
                 className={cn(
                   "bg-zinc-800 py-2 px-4 rounded-lg",
@@ -88,6 +89,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
                 Start Game
               </button>
               <button
+                type="button"
                 disabled={gameState === "idle"}
                 className={cn(
                   "bg-zinc-800 py-2 px-4 rounded-lg",
@@ -105,6 +107,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
                 End Game
               </button>
               <button
+                type="button"
                 className="bg-zinc-800 py-2 px-4 rounded-lg"
                 // onClick={() => getUsers(chain?.network as TChainClient)}
               >
@@ -156,12 +159,11 @@ const AboutGameStrip: React.FC<AboutGameStripProps> = ({
       className
     )}
   >
-    {AboutGameStripData &&
-      AboutGameStripData.map(({ desc, title }) => (
-        <div key={`about-game-${title}`}>
-          <div className="text-base font-semibold text-heading">{title}</div>
-          <div className="text-sm font-normal">{desc}</div>
-        </div>
-      ))}
+    {AboutGameStripData?.map(({ desc, title }) => (
+      <div key={`about-game-${title}`}>
+        <div className="text-base font-semibold text-heading">{title}</div>
+        <div className="text-sm font-normal">{desc}</div>
+      </div>
+    ))}
   </div>
 );

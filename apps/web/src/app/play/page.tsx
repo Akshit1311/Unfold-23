@@ -4,9 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/utils/helpers";
 
-type pageProps = {};
-
-const Play: React.FC<pageProps> = () => {
+const Play: React.FC = () => {
   // const { data: session, status } = useSession({ required: true });
 
   // if (status === "loading") return <div>Loading...</div>;
@@ -49,6 +47,7 @@ interface PlayStripProps {
 
 const PLayStrip: React.FC<PlayStripProps> = ({ title, onClick, src }) => (
   <button
+    type="button"
     style={{
       backgroundImage: `url(${src})`,
       backgroundPosition: "center",

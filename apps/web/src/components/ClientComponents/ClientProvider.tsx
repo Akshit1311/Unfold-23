@@ -33,7 +33,7 @@ import { publicClient } from "@/client/client";
 // import GlassGate from "../common/GlassGate/GlassGate";
 
 type ClientProviderProps = {
-  children: any;
+  children: React.ReactNode;
 };
 
 const { chains } = configureChains(

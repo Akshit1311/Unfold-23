@@ -1,41 +1,25 @@
 "use client";
 
-import CarouselContainer from "@/components/Carousel/Carousel";
 import Table from "@/components/Table/Table";
-import Tabs from "@/components/common/Tabs";
-import { useState } from "react";
-
-// import { useSession } from "next-auth/react";
-
-export type TActiveTab = "24" | "season" | "all";
+import { useSession } from "next-auth/react";
 
 function Home() {
-  //   const { data: session, status } = useSession();
+  const { data: session, status } = useSession();
 
-  const [activeTab, setActiveTab] = useState<TActiveTab>("24");
-
-  const activeTabMap = {
-    "24": <div>24</div>,
-    season: <div>season</div>,
-    all: <div>all</div>,
-  } as const;
-
-  //   if (status === "loading") return <div>Loading...</div>;
+  // if (status === "loading") return <div>Loading...</div>;
 
   return (
-    <section className=" text-black max-w-7xl  mx-auto py-10">
-      <CarouselContainer />
-
-      <div className="mt-16">
-        <div className="text-heading uppercase font-semibold  text-center text-3xl">
-          Leaderboards
+    <section className="  text-black max-w-7xl  mx-auto py-10">
+      <div>
+        <div className="text-heading  text-center text-3xl">Season: 1</div>
+        <div className=" text-black text-center mt-3">
+          Season 1 is just the beginning.There's a lot more coming...
         </div>
 
-        <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
-
-        {/* <Table /> */}
-
-        <div className=" mt-4">{activeTabMap[activeTab]}</div>
+        <div className="uppercase text-heading text-center text-xl mt-2">
+          Rolling 24H Leaderboard
+        </div>
+        <Table />
       </div>
     </section>
   );

@@ -1,9 +1,7 @@
 import { cn } from "@/utils/helpers";
 import React from "react";
 
-type Props = {};
-
-const GlassGate = (props: Props) => {
+const GlassGate = () => {
   return (
     <div
       className={cn(
@@ -14,7 +12,7 @@ const GlassGate = (props: Props) => {
     >
       <div className="text-center">
         <div className="text-heading text-6xl font-semibold uppercase">
-          retroarc 1.0 👾
+          retroarc 👾
         </div>
         {/* <button
           className="bg-purple-900 border-2 border-black py-2 px-4 rounded-lg my-4"
