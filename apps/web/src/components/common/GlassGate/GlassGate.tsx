@@ -2,8 +2,6 @@ import { cn } from "@/utils/helpers";
 import React from "react";
 
 const GlassGate = () => {
-
-  use
   return (
     <div
       className={cn(
@@ -19,7 +17,7 @@ const GlassGate = () => {
         <button
           type="button"
           className="bg-blue-400 border-2 border-black py-2 px-4 rounded-lg my-4 text-white"
-          onClick={() => signIn()}
+          onClick={() => alert("todo")}
         >
           Sign In 🌍
         </button>
