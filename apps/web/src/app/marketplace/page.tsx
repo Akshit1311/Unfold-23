@@ -13,7 +13,7 @@ const Marketplace: React.FC = () => {
       <div className="px-10 flex flex-wrap items-center justify-center gap-2">
         {Array.from({ length: 6 }).map((_, i) => (
           <MarketplaceCard
-            key={i}
+            key={`marketplace-${i}`}
             title="test"
             onClick={() => alert("todo")}
             src={`/images/${car}.jpg`}
@@ -60,7 +60,7 @@ const MarketplaceCard: React.FC<MarketplaceCardProps> = ({
           variant="btn-primary"
           onClick={onClick}
           title="Buy Now"
-          className="px-3 py-1.5"
+          className="px-3 py-1.5 text-white"
         />
       </div>
     </div>

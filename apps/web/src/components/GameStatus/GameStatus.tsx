@@ -3,16 +3,19 @@ import { cn } from "@/utils/helpers";
 import React, { useState } from "react";
 import { useNetwork } from "wagmi";
 import ThreeDButton from "../common/ThreeDButton";
+import { pointsAtom, usePointsAtom } from "@/atoms/points.atom";
 
 const GameStatus = () => {
   const [gameState, setGameState] = useState<TGameState>("idle");
+
+  const [points] = usePointsAtom();
   const { chain } = useNetwork();
   return (
     <div className="w-[50%] h-full rounded-lg p-2 lowercase font-mono">
       <div className="flex items-center justify-between w-[70%]">
         <div>
           <h1 className="text-heading text-xl font-bold mb-1">Score</h1>
-          <div className="text-[#777]">numbers</div>
+          <div className="text-[#777]">{points}</div>
         </div>
 
         <div>
@@ -33,19 +36,19 @@ const GameStatus = () => {
         <div className="flex gap-2">
           <ThreeDButton
             variant="btn-info"
-            className="px-5 py-2.5"
+            className="px-5 py-2.5 text-white"
             onClick={() => ""}
             title="Start Game"
           />
           <ThreeDButton
             variant="btn-danger"
-            className="px-5 py-2.5"
+            className="px-5 py-2.5 text-white"
             onClick={() => ""}
             title="End Game"
           />
           <ThreeDButton
             variant="btn-success"
-            className="px-5 py-2.5"
+            className="px-5 py-2.5 text-white"
             onClick={() => ""}
             title="Get Users"
           />

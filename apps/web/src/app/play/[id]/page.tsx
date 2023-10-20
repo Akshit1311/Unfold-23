@@ -19,6 +19,8 @@ export type TGameState = "idle" | "ongoing";
 const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
   // const [users, setUsers] = useState<Awaited<ReturnType<typeof getUsers>>>([]);
 
+  const [score, setScore] = useState<number>(0);
+
   // useEffect(() => {
   //   (async () => {
   //     const _users = await getUsers(chain?.network as TChainClient);
@@ -33,6 +35,36 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
     cars: "bg-transparent",
     tetris: "bg-transparent",
     "card-memory": "bg-[#01B2AD]",
+  } as const;
+
+  const gameKeyMap = {
+    snake: {
+      w: "up",
+      a: "left",
+      s: "bottom",
+      d: "right",
+      p: "toggle pause",
+    },
+    tetris: {
+      "w/x": "flip clockwise",
+      z: "flip counterclockwise",
+      s: "down",
+      a: "left",
+      d: "right",
+      p: "toggle pause",
+      shift: "hold",
+    },
+    cars: {
+      w: "up",
+      a: "left",
+      s: "bottom",
+      d: "right",
+      r: "reset",
+      k: "swipe camera",
+    },
+    "card-memory": {
+      "mouse-click/left-click": "select",
+    },
   } as const;
 
   return (
@@ -56,16 +88,14 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
       </div>
 
       <div className="mt-4">
-        <div className="lowercase font-mono text-lg text-heading font-bold">
+        <div className="lowercase font-mono text-lg text-heading font-bold mb-4">
           Controls
         </div>
-
-        <button
-          type="button"
-          className="px-4 py-2 rounded-xl border-4 border-[#777] flex items-center justify-center h-10 shadow-xl"
-        >
-          W
-        </button>
+        <div className="flex items-center gap-8 flex-wrap w-2/3">
+          {Object.entries(gameKeyMap[params.id]).map(([key, value], i) => (
+            <KeyBox x={key} y={value} key={`keyboard-key-${i}`} />
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -96,5 +126,15 @@ const AboutGameStrip: React.FC<AboutGameStripProps> = ({
         <div className="text-sm font-normal">{desc}</div>
       </div>
     ))}
+  </div>
+);
+
+const KeyBox = ({ x, y }: { x: string; y: string }) => (
+  <div className="flex items-center space-x-2">
+    <div className="px-4 py-2 font-roobert font-bold w-fit text-[#777] rounded-xl border-4 border-[#777] flex items-center justify-center h-10">
+      {x}
+    </div>
+
+    <div className="text-lg text-[#777] font-bold">: {y}</div>
   </div>
 );

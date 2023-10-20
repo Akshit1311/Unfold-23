@@ -1,12 +1,22 @@
+import { setPointsAtom } from "@/atoms/points.atom";
 import React from "react";
 import Tetris from "react-tetris";
 
-type TetrisProps = {};
+const TetrisGame: React.FC = () => {
+  const setAtom = setPointsAtom();
 
-const TetrisGame: React.FC<TetrisProps> = () => {
   return (
     <div>
-      <Tetris>
+      <Tetris
+        keyboardControls={{
+          w: "FLIP_CLOCKWISE",
+          x: "FLIP_CLOCKWISE",
+          s: "MOVE_DOWN",
+          a: "MOVE_LEFT",
+          d: "MOVE_RIGHT",
+          z: "FLIP_COUNTERCLOCKWISE",
+        }}
+      >
         {({
           Gameboard,
           HeldPiece,
@@ -26,11 +36,14 @@ const TetrisGame: React.FC<TetrisProps> = () => {
             {state === "LOST" ? (
               <div>
                 <div>Game Over</div>
-                <div>Your Points: {points}</div>
+                <div>Your Points</div>
                 <div
                   role="presentation"
                   className="cursor-pointer"
-                  onClick={() => controller.restart()}
+                  onClick={() => {
+                    setAtom(points);
+                    controller.restart();
+                  }}
                 >
                   New Game
                 </div>
