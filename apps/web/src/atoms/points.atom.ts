@@ -1,4 +1,4 @@
-import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
+import { atom, useAtom, useSetAtom } from "jotai";
 import { z } from "zod";
 const HashSchema = z.number();
 

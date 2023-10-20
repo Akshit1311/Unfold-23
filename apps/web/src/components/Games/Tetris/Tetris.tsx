@@ -25,32 +25,36 @@ const TetrisGame: React.FC = () => {
           linesCleared,
           points,
           state,
-        }) => (
-          <div className="flex items-start gap-10 w-full">
-            <HeldPiece />
+        }) => {
+          setAtom(points);
 
-            <Gameboard />
+          return (
+            <div className="flex items-start gap-10 w-full">
+              <HeldPiece />
 
-            <PieceQueue />
+              <Gameboard />
 
-            {state === "LOST" ? (
-              <div>
-                <div>Game Over</div>
-                <div>Your Points</div>
-                <div
-                  role="presentation"
-                  className="cursor-pointer"
-                  onClick={() => {
-                    setAtom(points);
-                    controller.restart();
-                  }}
-                >
-                  New Game
+              <PieceQueue />
+
+              {state === "LOST" ? (
+                <div>
+                  <div>Game Over</div>
+                  <div>Your Points</div>
+                  <div
+                    role="presentation"
+                    className="cursor-pointer"
+                    onClick={() => {
+                      setAtom(points);
+                      controller.restart();
+                    }}
+                  >
+                    New Game
+                  </div>
                 </div>
-              </div>
-            ) : null}
-          </div>
-        )}
+              ) : null}
+            </div>
+          );
+        }}
       </Tetris>
     </div>
   );
