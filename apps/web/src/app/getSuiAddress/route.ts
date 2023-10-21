@@ -3,7 +3,6 @@ import hkdf from "@panva/hkdf";
 import jwt_decode from "jwt-decode";
 
 import { jwtToAddress } from "@mysten/zklogin";
-
 export interface JwtPayload {
   iss: string;
   sub?: string; //Subject ID
@@ -23,7 +22,6 @@ export async function POST(request: Request, res: Response) {
   const body: { token: string } = await request.json();
 
   if (!body?.token) {
-    // console.log({ message: "Bad request" });
     return Response.json(
       {
         status: 400,
@@ -56,10 +54,7 @@ export async function POST(request: Request, res: Response) {
 
     console.log({ derivedSeed });
 
-    const zkLoginUserAddress = jwtToAddress(
-      body.token,
-      "100681567828351849884072155819400689117" // Whitelisting to be done in the future
-    );
+    const zkLoginUserAddress = jwtToAddress(body.token, "0");
 
     console.log({ zkLoginUserAddress });
 
