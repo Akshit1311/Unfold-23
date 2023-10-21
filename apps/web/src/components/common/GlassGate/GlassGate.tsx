@@ -29,22 +29,26 @@ const GlassGate = ({ title, gameType }: Props) => {
         (isGlassDoorOpen || wallet.connected) && "-translate-y-full",
       )}
     >
-      <div className="text-center">
-        <div className=" text-9xl font-semibold uppercase mb-10">
+      <div className="text-center bg-white p-8 border-2 border-black rounded-2xl w-2/5">
+        <div className=" text-7xl font-semibold uppercase mb-10">
           {title || "retroarc"} {gameType ? emojis[gameType] : "👾"}
         </div>
+        {/* 👾🚗👾🐍👾🎮👾🕹 */}
+        <div className="mb-10 text-4xl">
+          👾 🎮 🕹 {gameType ? emojis[gameType] : "👾"} 🕹 🎮 👾
+        </div>
 
-        <div className="flex gap-4 justify-center">
+        <div className="flex mx-auto  gap-4 justify-center">
           <ThreeDButton
             variant="btn-magick"
-            className="text-3xl py-5 px-10 rounded-lg my-4 text-white"
+            className="text-2xl py-3 px-5 rounded-lg my-4 text-white"
             onClick={() => setIsGlassDoorOpen(true)}
             title="Sign In 🌍"
           />
           {wallet.allAvailableWallets.map((wal) => (
             <ThreeDButton
               variant="btn-primary"
-              className="text-3xl py-5 px-10 rounded-lg my-4 text-white"
+              className="text-2xl py-3 px-5 rounded-lg my-4 text-white"
               onClick={() => {
                 // check if user installed the wallet
                 if (!wal.installed) {
@@ -53,7 +57,7 @@ const GlassGate = ({ title, gameType }: Props) => {
                 }
                 wallet.select(wal.name);
               }}
-              title="LOGIN with SUI 💧"
+              title="connect sui💧"
             />
           ))}
         </div>
