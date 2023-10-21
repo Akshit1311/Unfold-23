@@ -10,7 +10,7 @@ import { TransactionBlock } from "@mysten/sui.js/transactions";
 import { SerializedSignature } from "@mysten/sui.js/cryptography";
 
 // const REDIRECT_URI = "http://localhost:3000/redirect";
-const REDIRECT_URI = "https://retroarc.vercel.app/redirect";
+const REDIRECT_URI = "https://retroarc.vercel.app";
 let keyPair: Secp256k1Keypair;
 let maxEpoch: number;
 const FULLNODE_URL = "https://fullnode.devnet.sui.io";

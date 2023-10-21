@@ -1,16 +1,48 @@
 "use client";
 
 import Table from "@/components/Table/Table";
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 function Home() {
-  const { data: session, status } = useSession();
+  const router = useRouter();
 
-  // if (status === "loading") return <div>Loading...</div>;
   useEffect(() => {
-    redirect("/marketplace");
+    const url = window.location.href.split("#").join("?");
+    console.log({
+      url,
+    });
+
+    const { searchParams } = new URL(url);
+
+    const id_token = searchParams.get("id_token");
+
+    console.log({ id_token });
+    const validate = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/getSuiAddress", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token: id_token }),
+        });
+
+        const address = await res.json();
+        localStorage.setItem("userAddress", address.zkLoginUserAddress);
+        console.log({ address });
+
+        router.push("/marketplace");
+      } catch (error) {
+        console.log({ error });
+      }
+    };
+
+    if (id_token) {
+      validate();
+    } else {
+      router.push("/marketplace");
+    }
   }, []);
 
   return (
