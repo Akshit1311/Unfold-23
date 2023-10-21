@@ -5,7 +5,8 @@ import Snake from "@/components/Games/Snake/Snake";
 import { cn } from "@/utils/helpers";
 
 const CardMemory = dynamic(
-  () => import("@/components/Games/Card-Memory/card-memory")
+  () => import("@/components/Games/Card-Memory/card-memory"),
+  { ssr: true }
 );
 import React, { Suspense } from "react";
 import GameStatus from "@/components/GameStatus/GameStatus";
