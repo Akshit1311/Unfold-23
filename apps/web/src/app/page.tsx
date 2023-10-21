@@ -2,11 +2,16 @@
 
 import Table from "@/components/Table/Table";
 import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+import { useEffect } from "react";
 
 function Home() {
   const { data: session, status } = useSession();
 
   // if (status === "loading") return <div>Loading...</div>;
+  useEffect(() => {
+    redirect("/marketplace");
+  }, []);
 
   return (
     <section className="text-black max-w-7xl mx-auto pt-28">

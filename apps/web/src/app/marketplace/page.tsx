@@ -24,11 +24,17 @@ const Marketplace: React.FC = () => {
     // define a programmable transaction
     const tx = new TransactionBlock();
     const packageObjectId =
-      "0xc4ff062aec27c8d2bf5b88690e2b9592efa8c8842dfd79a31d40b80ec4ea63fb";
+      "0xdf48f102966d92cf2c86ed7eb5f27883c6c0da0bb5ec5696890d91c0a12ca263";
     tx.moveCall({
-      target: `${packageObjectId}::nft_example::mint_to_sender`,
+      target: `${packageObjectId}::user::mint_to_sender`,
       arguments: [tx.pure(name), tx.pure(description), tx.pure(image)],
     });
+    // const packageObjectId =
+    //   "0xc4ff062aec27c8d2bf5b88690e2b9592efa8c8842dfd79a31d40b80ec4ea63fb";
+    // tx.moveCall({
+    //   target: `${packageObjectId}::nft_example::mint_to_sender`,
+    //   arguments: [tx.pure(name), tx.pure(description), tx.pure(image)],
+    // });
 
     try {
       // execute the programmable transaction

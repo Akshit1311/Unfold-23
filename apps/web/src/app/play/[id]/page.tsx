@@ -69,14 +69,14 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
           <div
             className={cn(
               "w-[80%] h-full flex justify-center items-center border-2 border-black rounded-lg",
-              gameBgMap[params.id]
+              gameBgMap[params.id],
             )}
           >
             {/* "Game not started yet" */}
             {games[params.id]}
           </div>
 
-          <GameStatus />
+          <GameStatus gameName={params.id} />
         </div>
       </div>
 
@@ -110,7 +110,7 @@ const AboutGameStrip: React.FC<AboutGameStripProps> = ({
   <div
     className={cn(
       " border border-custom-2 p-2.5 rounded-lg flex items-center justify-between w-full",
-      className
+      className,
     )}
   >
     {AboutGameStripData?.map(({ desc, title }) => (
