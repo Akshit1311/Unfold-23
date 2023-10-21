@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mysten/zklogin": "^0.3.2",
+    "@panva/hkdf": "^1.1.1",
     "@mysten/sui.js": "^0.41.1",
     "@rainbow-me/rainbowkit": "^1.0.6",
     "@suiet/wallet-kit": "^0.2.20",
@@ -20,8 +22,10 @@
     "eslint": "8.43.0",
     "evm": "workspace:*",
     "jotai": "^2.2.2",
+    "jwt-decode": "^3.1.2",
     "next": "13.4.7",
     "next-auth": "^4.23.0",
+    "next-themes": "^0.2.1",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-card-memory-game": "^1.1.6",
@@ -29,6 +33,7 @@
     "react-game-snake": "^1.0.4",
     "react-hot-toast": "^2.4.1",
     "react-tetris": "^0.3.0",
+    "suizklogin": "workspace:*",
     "tailwind-merge": "^1.13.2",
     "tailwindcss": "3.3.2",
     "typescript": "5.1.6",

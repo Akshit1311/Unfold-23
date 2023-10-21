@@ -26,7 +26,7 @@ const GlassGate = ({ title, gameType }: Props) => {
     <div
       className={cn(
         "font-proto grid place-items-center bg-slate-300/30 backdrop-blur-xl fixed inset-0 z-50 transition-all ease-in  duration-500",
-        (isGlassDoorOpen || wallet.connected) && "-translate-y-full",
+        (isGlassDoorOpen || wallet.connected) && "-translate-y-full"
       )}
     >
       <div className="text-center bg-white p-8 border-2 border-black rounded-2xl w-2/5">

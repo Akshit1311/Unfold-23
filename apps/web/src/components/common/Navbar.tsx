@@ -12,12 +12,14 @@ import { Moon, Sun } from "@/assets/icons";
 // Components
 import { toast } from "react-hot-toast";
 import { cn } from "@/utils/helpers";
+import { googleSignIn } from "@/app/actions";
 import { useWallet } from "@suiet/wallet-kit";
 import ThreeDButton from "./ThreeDButton";
 // import { getUsers, startGame, endGame } from "evm";
 
 const Navbar: React.FC = () => {
   const { data: session } = useSession();
+  const router = useRouter();
 
   const { push } = useRouter();
 
@@ -62,8 +64,15 @@ const Navbar: React.FC = () => {
           </ul>
         </div>
       </div>
-      <div className="flex items-center gap-4">
-        {/* {wallet?.address || <ConnectButton />} */}
+      <form action={googleSignIn} className="flex items-center gap-4">
+        <ConnectButton />
+        <button
+          // onClick={() => router.push("/items")}
+          className="bg-purple-900 border-2 border-black py-2 px-4 rounded-lg my-4"
+        >
+          Login with Gmail
+        </button>
+
         <div className="font-bold text-lg">{wallet?.address?.slice(0, 6)}</div>
         {wallet.connected && (
           <ThreeDButton
@@ -73,7 +82,7 @@ const Navbar: React.FC = () => {
             title="disconnect"
           />
         )}
-      </div>
+      </form>
     </header>
   );
 };
