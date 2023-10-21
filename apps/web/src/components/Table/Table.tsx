@@ -3,12 +3,21 @@ import { getUsers } from "evm";
 import React, { useEffect, useState } from "react";
 import { useAccount, useEnsName, useNetwork } from "wagmi";
 
-type TableProps = {};
-
-const Table: React.FC<TableProps> = () => {
+const Table: React.FC = () => {
   const TableHeading = ["Rank #", "ENS", "Address", "XP"];
   const { address } = useAccount();
   const { chain } = useNetwork();
+
+  const dataArr = [
+    ["axit.sui", "0x__46", "100xp"],
+    ["harsh.sui", "0x__24", "90xp"],
+    ["anjana.sui", "0x__12", "80xp"],
+    ["sidhya.sui", "0x__46", "70xp  "],
+    ["pretham.sui", "0x__98", "60xp"],
+    ["guava.sui", "0x__55", "50xp"],
+    ["gupta.sui", "0x__89", "40xp"],
+    ["haridas.sui", "0x__16", "30xp  "],
+  ];
 
   const [users, setUsers] = useState<Awaited<ReturnType<typeof getUsers>>>([]);
   useEffect(() => {
@@ -23,20 +32,10 @@ const Table: React.FC<TableProps> = () => {
   return (
     <div className="mt-4 mx-auto  text-center">
       <Thead headingArr={TableHeading} />
-      {/* {[...users]
-        .sort((a, b) => (a.xp < b.xp ? 1 : -1))
-        .filter(({ isOwner, xp }) => !isOwner && xp)
-        .map(({ userAddress, xp }, i) => (
-          <TBody
-            DataArr={[
-              `${userAddress.slice(0, 4)}...${userAddress.slice(-4)}`,
-              xp.toString(),
-            ]}
-            key={i}
-            index={i}
-            isYou={userAddress === address}
-          />
-        ))} */}
+      <br />
+      {dataArr.map((data, i) => (
+        <TBody DataArr={data} index={i} />
+      ))}
     </div>
   );
 };
@@ -78,14 +77,7 @@ const TBody: React.FC<TBodyProps> = ({ index, DataArr, isYou }) => {
       >
         {index + 1}
       </div>
-      <div
-        className={cn(
-          "md:p-4 p-2 border-l  border-heading  flex items-center justify-center w-1/2 text-xs md:text-base",
-          isYou && " bg-black/10"
-        )}
-      >
-        {data || "-"}
-      </div>
+
       {DataArr.map((data) => (
         <div
           className={cn(

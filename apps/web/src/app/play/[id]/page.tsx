@@ -8,7 +8,7 @@ const CardMemory = dynamic(
   () => import("@/components/Games/Card-Memory/card-memory"),
   { ssr: true }
 );
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import GameStatus from "@/components/GameStatus/GameStatus";
 import { gameBgMap } from "@/constants";
 import dynamic from "next/dynamic";
@@ -67,6 +67,10 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
     },
   } as const;
 
+  useEffect(() => {
+    console.log(params.id);
+  }, [params.id]);
+
   return (
     <section className="px-10 py-6">
       <div className=" text-black  flex items-center w-full flex-col ">
@@ -93,7 +97,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
           Controls
         </div>
         <div className="flex items-center gap-8 flex-wrap w-2/3">
-          {Object.entries(gameKeyMap[params.id]).map(([key, value], i) => (
+          {Object?.entries(gameKeyMap[params.id]).map(([key, value], i) => (
             <KeyBox x={key} y={value} key={`keyboard-key-${i}`} />
           ))}
         </div>

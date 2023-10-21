@@ -40,8 +40,6 @@ function Home() {
 
     if (id_token) {
       validate();
-    } else {
-      router.push("/marketplace");
     }
   }, []);
 
