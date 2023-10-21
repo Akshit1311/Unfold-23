@@ -1,13 +1,17 @@
 "use client";
-import CardMemory from "@/components/Games/Card-Memory/card-memory";
 import Cars from "@/components/Games/Cars/Cars";
 import TetrisGame from "@/components/Games/Tetris/Tetris";
 import Snake from "@/components/Games/Snake/Snake";
 import { cn } from "@/utils/helpers";
-// import { TChainClient, endGame, getUsers, startGame } from "op";
+
+const CardMemory = dynamic(
+  () => import("@/components/Games/Card-Memory/card-memory"),
+  { ssr: false }
+);
 import React, { useState } from "react";
 import GameStatus from "@/components/GameStatus/GameStatus";
 import { gameBgMap } from "@/constants";
+import dynamic from "next/dynamic";
 const games = {
   snake: <Snake />,
   cars: <Cars />,
@@ -69,7 +73,7 @@ const PageId = ({ params }: { params: { id: keyof typeof games } }) => {
           <div
             className={cn(
               "w-[80%] h-full flex justify-center items-center border-2 border-black rounded-lg",
-              gameBgMap[params.id],
+              gameBgMap[params.id]
             )}
           >
             {/* "Game not started yet" */}
@@ -110,7 +114,7 @@ const AboutGameStrip: React.FC<AboutGameStripProps> = ({
   <div
     className={cn(
       " border border-custom-2 p-2.5 rounded-lg flex items-center justify-between w-full",
-      className,
+      className
     )}
   >
     {AboutGameStripData?.map(({ desc, title }) => (
