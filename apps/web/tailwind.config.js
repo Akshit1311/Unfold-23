@@ -11,6 +11,7 @@ module.exports = {
         proto: ["Bungee Shade", "sans-serif"],
         roobert: ["Roobert", "sans-serif"],
         raleway: ["Raleway", "sans-serif"],
+        mono: ["Space Mono", "monospace"],
       },
       gridTemplateColumns: {
         // Simple 16 column grid

@@ -9,7 +9,7 @@ function Home() {
   // if (status === "loading") return <div>Loading...</div>;
 
   return (
-    <section className="  text-black max-w-7xl mx-auto pt-28">
+    <section className="text-black max-w-7xl mx-auto pt-28">
       <div>
         <div className="text-heading  text-center text-3xl">Season: 1</div>
         <div className=" text-black text-center mt-3">

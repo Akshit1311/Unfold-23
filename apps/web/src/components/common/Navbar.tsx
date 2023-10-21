@@ -13,6 +13,8 @@ import { Moon, Sun } from "@/assets/icons";
 import { toast } from "react-hot-toast";
 import { cn } from "@/utils/helpers";
 import { googleSignIn } from "@/app/actions";
+import { useWallet } from "@suiet/wallet-kit";
+import ThreeDButton from "./ThreeDButton";
 // import { getUsers, startGame, endGame } from "evm";
 
 const Navbar: React.FC = () => {
@@ -27,13 +29,15 @@ const Navbar: React.FC = () => {
       title: "Play Games",
       route: "/play",
     },
-    // {
-    //   title: "Marketplace",
-    //   route: "/marketplace",
-    // },
+    {
+      title: "Marketplace",
+      route: "/marketplace",
+    },
   ];
 
   const Heading = "Retroarc";
+
+  const wallet = useWallet();
 
   return (
     <header className="border-b border-black absolute w-full bg-white top-0 z-10 backdrop-blur-md px-10 py-5 flex items-center justify-between">
@@ -68,14 +72,15 @@ const Navbar: React.FC = () => {
         >
           Login with Gmail
         </button>
-        {session && (
-          <button
-            type="button"
-            className="bg-zinc-800 py-2 px-4 rounded-lg"
-            onClick={() => signOut()}
-          >
-            Sign Out
-          </button>
+
+        <div className="font-bold text-lg">{wallet?.address?.slice(0, 6)}</div>
+        {wallet.connected && (
+          <ThreeDButton
+            variant="btn-danger"
+            className="text-lg py-1 px-3 rounded-lg my-4 text-white"
+            onClick={wallet.disconnect}
+            title="disconnect"
+          />
         )}
       </form>
     </header>

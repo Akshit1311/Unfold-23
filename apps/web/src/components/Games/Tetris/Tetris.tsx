@@ -1,12 +1,23 @@
-import React from "react";
+import { setGameState } from "@/atoms/gameState.atom";
+import { setPointsAtom } from "@/atoms/points.atom";
+import React, { useEffect } from "react";
 import Tetris from "react-tetris";
 
-type TetrisProps = {};
-
-const TetrisGame: React.FC<TetrisProps> = () => {
+const TetrisGame: React.FC = () => {
+  const setAtom = setPointsAtom();
+  const seState = setGameState();
   return (
     <div>
-      <Tetris>
+      <Tetris
+        keyboardControls={{
+          w: "FLIP_CLOCKWISE",
+          x: "FLIP_CLOCKWISE",
+          s: "MOVE_DOWN",
+          a: "MOVE_LEFT",
+          d: "MOVE_RIGHT",
+          z: "FLIP_COUNTERCLOCKWISE",
+        }}
+      >
         {({
           Gameboard,
           HeldPiece,
@@ -15,29 +26,36 @@ const TetrisGame: React.FC<TetrisProps> = () => {
           linesCleared,
           points,
           state,
-        }) => (
-          <div className="flex items-start gap-10 w-full">
-            <HeldPiece />
+        }) => {
+          setAtom(points);
+          seState(state);
 
-            <Gameboard />
+          return (
+            <div className="flex items-start gap-10 w-full">
+              <HeldPiece />
 
-            <PieceQueue />
+              <Gameboard />
 
-            {state === "LOST" ? (
-              <div>
-                <div>Game Over</div>
-                <div>Your Points: {points}</div>
-                <div
-                  role="presentation"
-                  className="cursor-pointer"
-                  onClick={() => controller.restart()}
-                >
-                  New Game
+              <PieceQueue />
+
+              {state === "LOST" ? (
+                <div>
+                  <div>Game Over</div>
+                  <div>Your Points</div>
+                  <div
+                    role="presentation"
+                    className="cursor-pointer"
+                    onClick={() => {
+                      controller.restart();
+                    }}
+                  >
+                    New Game
+                  </div>
                 </div>
-              </div>
-            ) : null}
-          </div>
-        )}
+              ) : null}
+            </div>
+          );
+        }}
       </Tetris>
     </div>
   );
