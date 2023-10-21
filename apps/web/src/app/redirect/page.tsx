@@ -1,10 +1,9 @@
 "use client";
+import { redirect, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-type Props = {};
-
-const Page = (props: Props) => {
-  const [jwtToken, setJwtToken] = useState("");
+const Page = () => {
+  const router = useRouter();
 
   useEffect(() => {
     const url = window.location.href.split("#").join("?");
@@ -15,7 +14,6 @@ const Page = (props: Props) => {
     const { searchParams } = new URL(url);
 
     const id_token = searchParams.get("id_token");
-    id_token && setJwtToken(id_token);
 
     console.log({ id_token });
     (async () => {
@@ -31,6 +29,8 @@ const Page = (props: Props) => {
         const address = await res.json();
         localStorage.setItem("userAddress", address.zkLoginUserAddress);
         console.log({ address });
+
+        router.push("/marketplace");
       } catch (error) {
         console.log({ error });
       }

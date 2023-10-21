@@ -1,25 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-
-import { signIn, signOut, useSession } from "next-auth/react";
-
-// Assets
-import { Moon, Sun } from "@/assets/icons";
 
 // Components
-import { toast } from "react-hot-toast";
-import { cn } from "@/utils/helpers";
-import { googleSignIn } from "@/app/actions";
 import { useWallet } from "@suiet/wallet-kit";
 import ThreeDButton from "./ThreeDButton";
 // import { getUsers, startGame, endGame } from "evm";
 
 const Navbar: React.FC = () => {
-  const { data: session } = useSession();
   const router = useRouter();
+
+  const [localStorageAddr, setLocalStorageAddr] = useState("");
 
   const { push } = useRouter();
 
@@ -38,6 +30,10 @@ const Navbar: React.FC = () => {
   const Heading = "Retroarc";
 
   const wallet = useWallet();
+
+  useEffect(() => {
+    setLocalStorageAddr(localStorage.getItem("userAddress") || "");
+  }, []);
 
   return (
     <header className="border-b border-black absolute w-full bg-white top-0 z-10 backdrop-blur-md px-10 py-5 flex items-center justify-between">
@@ -64,25 +60,32 @@ const Navbar: React.FC = () => {
           </ul>
         </div>
       </div>
-      <form action={googleSignIn} className="flex items-center gap-4">
-        <ConnectButton />
-        <button
+      <div className="flex items-center gap-4">
+        {/* <ConnectButton /> */}
+        {/* <button
           // onClick={() => router.push("/items")}
           className="bg-purple-900 border-2 border-black py-2 px-4 rounded-lg my-4"
         >
           Login with Gmail
-        </button>
+        </button> */}
 
-        <div className="font-bold text-lg">{wallet?.address?.slice(0, 6)}</div>
-        {wallet.connected && (
+        <div className="font-bold text-lg">
+          {(localStorageAddr || wallet?.address)?.slice(0, 6)}
+        </div>
+        {(localStorageAddr || wallet.connected) && (
           <ThreeDButton
             variant="btn-danger"
             className="text-lg py-1 px-3 rounded-lg my-4 text-white"
-            onClick={wallet.disconnect}
+            onClick={() => {
+              if (localStorageAddr) {
+                localStorage?.removeItem("userAddress");
+                setLocalStorageAddr("");
+              } else wallet.disconnect();
+            }}
             title="disconnect"
           />
         )}
-      </form>
+      </div>
     </header>
   );
 };

@@ -14,6 +14,7 @@ interface Props {
     | "btn-primary";
   onClick: () => void;
   className?: string;
+  isSubmit?: boolean;
 }
 
 const ThreeDButton: React.FC<Props> = ({
@@ -21,10 +22,11 @@ const ThreeDButton: React.FC<Props> = ({
   title,
   onClick,
   className,
+  isSubmit,
 }) => (
   <button
     onClick={onClick}
-    type="button"
+    type={isSubmit ? "submit" : "button"}
     className={cn("btn btn-lg btn3d  lowercase font-mono", variant, className)}
   >
     <span className="glyphicon glyphicon-ok" /> {title}

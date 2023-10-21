@@ -3,6 +3,8 @@ import hkdf from "@panva/hkdf";
 import jwt_decode from "jwt-decode";
 
 import { jwtToAddress } from "@mysten/zklogin";
+import { NextResponse } from "next/server";
+
 export interface JwtPayload {
   iss: string;
   sub?: string; //Subject ID
@@ -15,14 +17,14 @@ export interface JwtPayload {
 
 export async function GET(request: Request) {
   const data = "helloworld";
-  return Response.json({ data });
+  return NextResponse.json({ data });
 }
 
-export async function POST(request: Request, res: Response) {
+export async function POST(request: Request, res: NextResponse) {
   const body: { token: string } = await request.json();
 
   if (!body?.token) {
-    return Response.json(
+    return NextResponse.json(
       {
         status: 400,
         message: "JWT not found",
@@ -37,7 +39,7 @@ export async function POST(request: Request, res: Response) {
   console.log({ decoded });
 
   if (!(decoded.iss || decoded.aud) && !decoded.sub) {
-    return Response.json(
+    return NextResponse.json(
       { status: 400, message: "Bad request" },
       { status: 400 }
     );
@@ -58,14 +60,14 @@ export async function POST(request: Request, res: Response) {
 
     console.log({ zkLoginUserAddress });
 
-    return Response.json({
+    return NextResponse.json({
       message: "Seed generated successfully",
       seed: derivedSeed.join(""),
       zkLoginUserAddress,
     });
   } catch (error) {
     console.log({ error });
-    return Response.json(
+    return NextResponse.json(
       { status: 500, message: "Bad request" },
       { status: 500 }
     );
