@@ -5,10 +5,9 @@ import Snake from "@/components/Games/Snake/Snake";
 import { cn } from "@/utils/helpers";
 
 const CardMemory = dynamic(
-  () => import("@/components/Games/Card-Memory/card-memory"),
-  { ssr: false }
+  () => import("@/components/Games/Card-Memory/card-memory")
 );
-import React, { useState } from "react";
+import React, { Suspense } from "react";
 import GameStatus from "@/components/GameStatus/GameStatus";
 import { gameBgMap } from "@/constants";
 import dynamic from "next/dynamic";
@@ -16,7 +15,11 @@ const games = {
   snake: <Snake />,
   cars: <Cars />,
   tetris: <TetrisGame />,
-  cards: <CardMemory />,
+  cards: (
+    <Suspense fallback={<div>...loading...</div>}>
+      <CardMemory />
+    </Suspense>
+  ),
 } as const;
 
 export type TGameState = "idle" | "ongoing";
